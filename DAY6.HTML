@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Drawing App using JavaScript</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            min-height: 100%;
+            font-family: Roboto, sans-serif;
+            background: black;
+            line-height: 1.4;
+            overflow: hidden;
+        }
+
+        .panel {
+            width: 10%;
+            padding: 10px;
+            background: #202020;
+            min-width: 150px;
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        a {
+            color: hsla(180, 50%, 50%, 1);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: lighten(hsla(180, 50%, 50%, 1), 15%);
+        }
+
+        .colorbox {
+            height: 140px;
+            background: hsla(180, 50%, 50%, 1);
+            display: block;
+            transition: 0.2s;
+            width: 100%;
+            margin: 20px auto;
+            border: 4px solid black;
+        }
+
+        label {
+            display: block;
+            color: white;
+            font-weight: 100;
+            font-size: 1.3rem;
+            padding: 5px 0;
+            text-shadow: 1px 1px 0 black;
+        }
+
+        span {
+            transition: 0.4s;
+            font-size: 0.8em;
+            float: right;
+            background: black;
+            display: block;
+            padding: 5px 10px;
+            position: relative;
+            bottom: 5px;
+            border-radius: 5px;
+        }
+
+        .slider {
+            width: 100%;
+            -webkit-appearance: none;
+            background: black;
+            outline: none;
+            cursor: pointer;
+            height: 6px;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            background: #111;
+            height: 24px;
+            width: 12px;
+            box-shadow: 0 2px 5px 0 black;
+        }
+
+        canvas {
+            float: right;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .reset {
+            outline: none;
+            border: none;
+            display: block;
+            width: 100%;
+            margin: 20px 0;
+            background: #050505;
+            color: white;
+            padding: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: Roboto, sans-serif;
+            font-weight: 100;
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+
+        .reset:hover {
+            background: #111;
+        }
+
+        .reset:active {
+            background: black;
+        }
+        <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: #f0f0f0;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .panel {
+        background: #333;
+        color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .panel label {
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    .slider {
+        background: #666;
+        width: 100%;
+        height: 10px;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background: #333;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        cursor: pointer;
+        margin-top: -6px;
+    }
+
+    .colorbox {
+        background: hsla(180, 50%, 50%, 1);
+        height: 30px;
+        border: 2px solid #444;
+        border-radius: 4px;
+        margin: 10px 0;
+    }
+
+    .reset,
+    #eraser {
+        background: #ff5555;
+        color: #fff;
+        font-size: 1.2rem;
+        border: none;
+        padding: 10px 20px;
+        margin-top: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background 0.3s;
+    }
+
+    .reset:hover,
+    #eraser:hover {
+        background: #ff3333;
+    }
+
+    canvas {
+        background: #fff;
+        border: 2px solid #444;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+    </style>
+</head>
+
+<body>
+    <div class="panel">
+        <label for="color">Color</label>
+        <input type="range" min="1" max="360" value="180" id="color" class="slider" />
+        <span class="colorbox"></span>
+        <label for="size">Size <span>20</span></label>
+        <input type="range" min="1" value="20" max="110" id="size" class="slider" />
+        <button class="reset">Reset</button>
+        <button id="eraser" class="reset">Eraser</button>
+    </div>
+    <canvas>
+        
+    </canvas>
+
+    <script>
+        var Sketch = (function () {
+            var Sketch = {
+                init: function () {
+                    this.colorSlider = document.getElementById("color");
+                    this.sizeSlider = document.getElementById("size");
+                    this.sizeSpan = document.querySelector("label span");
+                    this.colorbox = document.querySelector(".colorbox");
+                    this.reset = document.querySelector(".reset");
+                    this.eraser = document.getElementById("eraser"); // Added eraser button
+                    this.color = this.color || 'hsla(180, 50%, 50%, 1)';
+                    this.canvas = document.querySelector("canvas");
+                    this.ctx = this.canvas.getContext("2d");
+                    this.drawing = false;
+                    this.erasing = false; // Added erasing state
+                    this.radius = this.sizeSlider.value / 2;
+                    this.resizeCanvas();
+                    this.binding();
+                },
+
+                binding: function () {
+                    this.colorSlider.addEventListener("change", this.colorSliderChange);
+                    this.sizeSlider.addEventListener("change", this.sizeSliderChange);
+                    this.reset.addEventListener("click", this.resetClick.bind(this));
+                    this.eraser.addEventListener("click", this.eraserClick.bind(this)); // Added eraser button click event
+                    this.canvas.onmousedown = this.mouseDown;
+                    this.canvas.onmousemove = this.mouseMove;
+                    window.addEventListener("mouseup", this.stop.bind(this));
+                    window.addEventListener("resize", this.resizeCanvas.bind(this));
+                },
+
+                resizeCanvas: function () {
+                    this.canvas.height = window.innerHeight;
+                    this.canvas.width = window.innerWidth;
+                },
+
+                clearCanvas: function () {
+                    this.ctx.fillStyle = "black";
+                    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                },
+
+                resetClick: function () {
+                    this.clearCanvas();
+                },
+
+                eraserClick: function () {
+                    this.erasing = !this.erasing; // Toggle erasing state
+                    if (this.erasing) {
+                        this.eraser.style.backgroundColor = "red"; // Change button color to indicate erasing mode
+                        this.ctx.fillStyle = "black";
+                    } else {
+                        this.eraser.style.backgroundColor = "#050505"; // Reset button color
+                        this.ctx.fillStyle = this.color; // Restore the drawing color
+                    }
+                },
+
+                mouseDown: function (e) {
+                    var s = Sketch;
+                    s.drawing = true;
+                    var rect = this.getBoundingClientRect();
+                    var x = e.x - rect.left;
+                    var y = e.y - rect.top;
+                    if (s.drawing) {
+                        s.draw(x, y);
+                    }
+                },
+
+                mouseMove: function (e) {
+                    var s = Sketch;
+                    var rect = this.getBoundingClientRect();
+                    var x = e.x - rect.left;
+                    var y = e.y - rect.top;
+                    if (s.drawing) {
+                        s.draw(x, y);
+                    }
+                },
+
+                stop: function () {
+                    this.drawing = false;
+                },
+
+               
+draw: function (x, y) {
+    if (this.erasing) {
+        this.ctx.globalCompositeOperation = "destination-out"; // Use destination-out to erase
+        this.ctx.beginPath();
+        this.ctx.arc(x, y, this.radius, 0, Math.PI * 2, false);
+        this.ctx.fill();
+        this.ctx.globalCompositeOperation = "source-over"; // Restore the default operation
+    } else {
+        this.ctx.fillStyle = this.color;
+        this.ctx.beginPath();
+        this.ctx.moveTo(x, y);
+        this.ctx.arc(x, y, this.radius, 0, Math.PI * 2, false);
+        this.ctx.fill();
+    }
+},
+
+colorSliderChange: function () {
+    var that = Sketch;
+    that.color = that.hsla(this.value);
+    that.colorbox.style.background = that.color;
+    if (!that.erasing) {
+        that.ctx.fillStyle = that.color; // Update drawing color when not erasing
+    }
+},
+
+sizeSliderChange: function () {
+    var that = Sketch;
+    var value = this.value;
+    that.radius = value / 2;
+    that.sizeSpan.innerHTML = value;
+},
+
+hsla: function (num) {
+    return "hsla(" + num + ", 50%, 50%, 1)";
+}
+};
+
+Sketch.init();
+})();
+</script>
+</body>
+
+</html>

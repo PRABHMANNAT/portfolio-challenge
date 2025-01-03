@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <!-- Include Tailwind CSS (you can link to the CDN or use a local installation) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Add your custom CSS file (optional) -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Font Awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .floating-icons {
+            position: absolute;
+            top: 50%;
+            right: 20px; /* Adjust the right distance as needed */
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column; /* Stack icons vertically */
+            gap: 20px; /* Adjust the gap between icons as needed */
+        }
+
+        .social-icon {
+            font-size: 24px;
+            color: #0077B5;
+            background-color: white;
+            padding: 10px;
+            border-radius: 50%;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+        /* Adjust the content width and make it grow to cover leftover space */
+        .content {
+            flex-grow: 1;
+        }
+
+        /* Add a hover effect to the image */
+        .profile-image {
+            transition: transform 2s linear;
+        }
+
+        .profile-image:hover {
+            animation: marqueeEffect 10s infinite linear;
+        }
+
+        @keyframes marqueeEffect {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-10">
+        <section class="bg-white p-8 rounded shadow-lg relative flex">
+            <div class="content"> <!-- Make the content grow to cover leftover space -->
+                <h1 class="text-3xl font-bold mb-4">About Me</h1>
+                <!-- Add a div to the image for click/hover functionality -->
+                <div class="relative">
+                    <img src="https://arrowscience.weebly.com/uploads/1/2/6/5/126543820/picofme-4-1-fotor-20230907194644_orig.png" alt="Profile Picture" class="w-32 h-32 rounded-full object-cover mb-4 profile-image">
+                    <div id="toggleImage" class="absolute top-0 right-0 w-0 h-0 overflow-hidden">
+                        <!-- Add an icon or text for the click/hover effect -->
+                        <i class="fas fa-arrow-circle-right text-2xl text-blue-500 hover:text-blue-600 cursor-pointer"></i>
+                    </div>
+                </div>
+                <p class="text-gray-700 text-lg">Hello, I'm Prabhmannat. I'm a web developer currently having proficiency in HTML, CSS, JavaScript, Tailwind, and various web frameworks.</p>
+                <button id="toggleMore" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full focus:outline-none hover:bg-blue-600 transition">Read More</button>
+                <div id="moreInfo" class="hidden mt-4">
+                 <p class="text-gray-700 text-lg">Currently, I'm taking on a personal challenge: 50 days, 50 diverse projects - each ranging from intermediate to hard difficulty. The twist? I'm using only HTML, CSS, JavaScript, and Tailwind. I'm pursuing my computer science degree at Chandigarh University, and this challenge has become an exciting part of my journey.
+
+                        Throughout this process, I'm not just refining my skills but also stretching my creative boundaries. I've developed a website to showcase all these projects, presented in a professional manner and complemented with their source code.
+                        
+                        As someone passionate about web development, I find joy in crafting captivating front-end experiences. I'm well-versed in HTML, CSS, JavaScript, and Tailwind. Moreover, I'm eager to delve into the dynamic realms of React and Flutter. I'm on the lookout for stimulating internship and career opportunities that will allow me to grow further in this field. Let's collaborate and create something truly extraordinary together!</p>
+                    <br>
+  <br>
+  <br>
+  
+<HR>
+    <BR>
+<br>
+<a href="https://www.instagram.com/prabh_mannat_369" target="_blank" style="background-color: #E4405F; /* Instagram color */
+color: #fff; /* Text color */
+padding: 10px 15px; /* Reduced padding for smaller size */
+border-radius: 10px;
+text-decoration: none;
+font-weight: bold;
+font-size: 17px; /* Reduced font size */
+border: none;
+cursor: pointer;">Chat on Instagram</a>
+<br>
+
+</div>
+
+</div>
+<!-- Social media icons -->
+<div class="floating-icons">
+<a href="https://www.instagram.com/prabh_mannat_369/" target="_blank" class="social-icon">
+  <i class="fab fa-instagram"></i>
+</a>
+<a href="https://www.linkedin.com/in/prabhmannat-singh-39209b290/" target="_blank" class="social-icon">
+  <i class="fab fa-linkedin"></i>
+</a>
+<HR>
+<!-- Add more social media icons as needed -->
+</div>
+</section>
+                   
+
+    
+
+
+  </div>
+  
+  
+</div>
+    <script>
+        // JavaScript to toggle the image position on click/hover
+        const profileImage = document.querySelector('.profile-image');
+        const toggleImage = document.getElementById('toggleImage');
+
+        toggleImage.addEventListener('click', function () {
+            if (profileImage.style.transform === 'translateX(-100%)') {
+                profileImage.style.transform = 'translateX(0%)';
+            } else {
+                profileImage.style.transform = 'translateX(-100%)';
+            }
+        });
+             // JavaScript to toggle the "Read More" section
+             document.getElementById('toggleMore').addEventListener('click', function () {
+            const moreInfo = document.getElementById('moreInfo');
+            if (moreInfo.style.display === 'none' || moreInfo.style.display === '') {
+                moreInfo.style.display = 'block';
+                this.innerText = 'Read Less';
+            } else {
+                moreInfo.style.display = 'none';
+                this.innerText = 'Read More';
+            }
+        });
+    </script>
+</body>
+</html>

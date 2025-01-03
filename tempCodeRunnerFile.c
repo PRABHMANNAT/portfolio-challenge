@@ -1,0 +1,1 @@
+    printf("Stack overflow. Cannot push %d to the stack.\n", value);

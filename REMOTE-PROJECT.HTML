@@ -1,0 +1,379 @@
+<html>
+    <head>
+<style>
+     @import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@700&display=swap');
+    body {
+      background-color: rgb(216, 223, 216);
+    }
+
+    span {
+      font-family: 'Quattrocento Sans', sans-serif;
+      font-size: 20px;
+      color: brown;
+   
+    }
+
+    h1 {
+      font-family: 'Quattrocento Sans', sans-serif;
+      font-size: 28px;
+      text-align: left;
+    }
+    .remote {
+      float: left;
+      margin-top: 20%;
+      margin-left: 50px;
+      display: flex;
+      padding: 15px 10px;
+      justify-content: center;
+      transform: rotate(7deg);
+      width:70px;
+      height:200px;
+      background-color: rgb(49, 48, 48);
+      border-radius: 5px;
+      border: 2px solid rgb(5, 5, 5);
+      box-shadow: 5px 5px 5px rgb(0, 0, 0);
+    }
+
+
+    .inner{  display: grid;
+  grid-template-columns: 25px 25px 25px;
+  grid-template-rows: 25px 25px 25px 25px;
+  gap: 5px 5px;
+  text-align: center;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-size: 13px;
+  color: antiquewhite;
+  grid-auto-flow: row;
+justify-content: center;
+justify-items: center;
+  grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . ."
+    ". . .";
+}
+
+
+
+    .row {
+      margin: 10px;
+      margin-top: 50px;
+      width:100%;
+ 
+    }
+
+
+hr {
+  margin-top:-50px;
+transform: rotate(270deg);
+height: 90px;
+}
+
+
+    .control0 {
+      width:15px;
+      height:15px;
+      border-radius:50%;
+      background-color: brown;
+      color:antiquewhite;
+      text-align: center;
+      border: 1px solid rgb(70, 20, 20);
+      cursor: pointer;
+    }
+
+    .control02 {
+      width:15px;
+      height:15px;
+      border-radius:50%;
+      background-color: brown;
+      color:antiquewhite;
+      border: 1px solid rgb(70, 20, 20);
+      cursor: pointer;
+    }
+
+    .on {
+      margin-top: 2px;
+      margin-left:2px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      color:transparent;
+      border: 2px solid rgb(245, 243, 240);
+      border-top-color: transparent;
+      }
+     
+             h5 {
+              margin-top:-2px;
+                 font-size: 8px;
+                 font-weight: bold;
+                 color: antiquewhite;
+           
+             
+             }
+ 
+             
+
+    .control1, .control2, .control3, .control4, .control5, .control6, .control7, .control8, .control9, .control10, .control11, .control12, .control13 {
+      width:15px;
+      height:15px;
+      border-radius:50%;
+      background-color: rgb(245, 239, 239);
+      color:rgb(53, 53, 52);
+      border: 1px solid rgb(165, 162, 162);
+      cursor: pointer;
+
+    }
+
+
+  .control11 {
+    background-color: yellow;
+    color:rgb(53, 53, 52);
+    border: 1px solid rgb(31, 31, 30);
+    cursor: pointer;
+  }
+
+  .control12 {
+    
+    background-color: blue;
+    color:rgb(53, 53, 52);
+    cursor: pointer;
+    border: 1px solid rgb(31, 31, 30);
+  }
+
+  .control13 {
+    
+    background-color: green;
+    color:rgb(53, 53, 52);
+    border: 1px solid rgb(31, 31, 30);
+    cursor: pointer;
+  }
+
+
+
+    .container {
+      position: relative;
+        width: 750px;
+        height: 420px;
+        margin: 0 auto;
+        margin-left:350px;
+        margin-top:50px;
+        color: antiquewhite;
+        background-color: rgb(36, 33, 33);
+        border:7px solid rgb(3, 0, 0);
+        border-radius: 5px;
+        outline: 2px solid rgb(78, 75, 75);
+
+    }
+
+
+    h3 {
+      font-family: 'Quattrocento Sans', sans-serif;
+      color: rgb(247, 240, 240);
+      font-size: 14px;
+      text-shadow: 2px 1px 1px rgb(0, 0, 0);
+    }
+
+
+    .content {
+      display: flex;
+      margin-top: -430px;
+      width:100%;
+
+    }
+
+ 
+
+
+    .hidden-div, .hidden-div1, .hidden-div2, .hidden-div3, .hidden-div4, .hidden-div5, .hidden-div6, .hidden-div7, .hidden-div8, .hidden-div9, .hidden-div10, .hidden-div11, .hidden-div12, .hidden-div13, .hidden-div14, .hidden-div15, .hidden-div16 {
+      display: none;
+      padding: 10px;
+      color: antiquewhite;
+      height: 455px;
+    }
+
+
+    .hiddenDiv0 {
+      display: none;
+      background-color: black;
+      height: 430px;
+    }
+
+    .hiddenDiv02 {
+      display: none;
+      background-color: black;
+      height: 430px;
+    }
+
+  
+
+    video {
+      margin-top: -16px;
+      margin-left:-17px;
+      height: 430px;
+    }
+</style>
+    </head>
+    <body>
+        <h1>Use the remote controll to switch channels</h1>
+    <span> A bit of patience may be required as everything may take some time to load.</span>
+   
+  <div class="remote">
+    
+  <div class="inner">
+  
+    <div id="control0" class="control0"><div class="on"><h5>|</h5></div></div>
+    <div id="control02" class="control02"></div>
+    <div id="control1" class="control1">1</div>
+  <div id="control2" class="control2">2</div>
+  <div id="control3" class="control3">3</div>
+  <div id="control4" class="control4">4</div>
+  <div id="control5" class="control5">5</div>
+  <div id="control6" class="control6">6</div>
+  <div id="control7" class="control7">7</div>
+  <div id="control8" class="control8">8</div>
+  <div id="control9" class="control9">9</div>
+  <div id="control10" class="control10">10</div>
+  <div id="control11" class="control11"></div>
+  <div id="control12" class="control12"></div>
+  <div id="control13" class="control13"></div>
+  
+  </div>  </div>
+  <div class="container">
+    <div id="hiddenDiv0" class="hidden-div"></div> <!-- tv off -->
+  
+    <div id="hiddenDiv02" class="hidden-div" style="display: block;"> <!--channel  direct visssable  -->
+    
+      <video muted="" autoplay="" loop="">
+        <source src="https://youtu.be/7uVIzQYdbGk?feature=shared" type="video/mp4">
+      </video>
+  
+      <div class="content"><h3>SCREENSAVER</h3></div>
+    </div>
+    
+  
+  
+    <div id="hiddenDiv1" class="hidden-div"> <!--channel 1 musicals  -->
+    <video controls=""autoplay="" loop="">
+      <source src="/CHANNEL1.mp4" type="video/mp4">
+    </video>
+    <div class="content"><h3>LEVELS SONG</h3></div>
+  </div>
+  
+  
+  
+    <div id="hiddenDiv2" class="hidden-div">  <!-- channel two sport -->
+      <video   controls=""autoplay="" loop="">
+        <source src="/CHANNEL2.mp4" type="video/mp4">
+      </video>
+      <div class="content"><h3>CASE</h3></div>
+    </div>
+  
+  
+    <div id="hiddenDiv3" class="hidden-div">   <!-- channel three cartoons -->
+      <video controls=""autoplay="" loop="">
+        <source src="/CHANNEL3.mp4" type="video/mp4">
+      </video>
+      <div class="content"><h3>52 BARS</h3></div>
+    </div>
+  
+  
+  
+    <div id="hiddenDiv4" class="hidden-div">  <!-- channel four explore  -->
+      <video controls="" autoplay="" loop="">
+        <source src="/CHANNEL4.mp4" type="video/mp4">
+      </video>
+      <div class="content"><h3>ADMIRIN YOU</h3></div>
+    </div>
+  
+  
+  
+    <div id="hiddenDiv5" class="hidden-div">  <!-- channel five sport -->
+      <video  controls=""autoplay="" loop="">
+        <source src="/CHANNEL5.mp4" type="video/mp4">
+      </video>
+      <div class="content"><h3>CHORNI</h3></div>
+    </div>
+  
+  
+    <div id="hiddenDiv6" class="hidden-div"> <!--channel 6 sport 2  -->
+      <video controls="" autoplay="" loop=""">
+      <source src="/CHANNEL6.mp4" type="video/mp4">
+    </video>
+    <div class="content"><h3>POWER</h3></div>
+    </div>  
+  
+    <div id="hiddenDiv7" class="hidden-div">   <!-- channel 7 nature -->
+      <video  controls=""autoplay="" loop="">
+      <source src="/CHANNEL7.mp4" type="video/mp4">
+    </video>
+    <div class="content"><h3>HAS HAS</h3></div>
+    </div>
+  
+    <div id="hiddenDiv8" class="hidden-div">  <!--channel  8 travel -->
+      <video  controls=""autoplay="" loop="">
+      <source src="/CHANNEL8.mp4" type="video/mp4">
+    </video>
+    <div class="content"><h3>SANJU</h3></div>
+    </div>
+  
+    <div id="hiddenDiv9" class="hidden-div">  <!-- channel 9  music -->
+      <video controls=""autoplay="" loop="">
+      <source src="/CHANNEL9.mp4" type="video/mp4">
+    </video>
+    <div class="content"><h3>GAME</h3></div>
+    </div>  
+  
+    <div id="hiddenDiv10" class="hidden-div">  <!-- channel 10 stock index -->
+      <video controls=""autoplay="" loop="">
+      <source src="/CHANNEL10.mp4" type="video/mp4">
+    </video>
+    <div class="content"><h3>BAI BAI</h3></div>
+    </div> 
+  
+  
+    <div id="hiddenDiv11" class="hidden-div">  <!-- 11 working on it 
+      <video  autoplay="" loop="">
+      <source src="https://tofja.000webhostapp.com/caterpillar.mp4" type="video/mp4">
+    </video>
+    <div class="content"><h3>CH11 - NATURE</h3></div>
+    </div> 
+  
+    <div id="hiddenDiv12" class="hidden-div">  <!-- channel 12 working on it  -->
+      <video muted="" autoplay="" loop="">
+      <source src="https://tofja.000webhostapp.com/stunt.mp4" type="video/mp4">
+    </video>
+    <div class="content"><h3>CH12 - EXTREME SPORTS</h3></div>
+    </div>  
+  
+    <div id="hiddenDiv13" class="hidden-div">  <!-- channel 13 NATURE index -->
+      <video muted="" autoplay="" loop="">
+      <source src="https://tofja.000webhostapp.com/stock.mp4" type="video/mp4">
+    </video>
+    <div class="content"><h3>CH13 - FINANCIAL</h3></div> 
+    </div>
+    
+  
+  
+  </div>
+  
+    <script>
+        const controls = document.querySelectorAll('[id^="control"]');
+const hiddenDivs = document.querySelectorAll('.hidden-div');
+
+controls.forEach((control, index) => {
+  control.addEventListener('click', () => {
+    // Hide all hidden divs
+    hiddenDivs.forEach(div => div.style.display = 'none');
+
+    // Find the corresponding hidden div element based on the index
+    const hiddenDiv = hiddenDivs[index];
+
+    // Show the corresponding hidden div element
+    hiddenDiv.style.display = 'block';
+  });
+});
+    </script>
+   </body>
+   </html>
